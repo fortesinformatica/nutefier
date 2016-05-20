@@ -12,7 +12,7 @@ io.on('connection', function(socket){
 
 	socket.on('notificar', function(grupo_id){
 		console.log('notify @', grupo_id);
-		socket.broadcast.emit('notif', grupo_id);
+		socket.broadcast.emit('novidade', grupo_id);
 	});
 
   socket.on('disconnect', function(){

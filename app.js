@@ -1,7 +1,7 @@
 var http = require('http').Server(),
 		io = require('socket.io')(http);
 
-var port = 443;
+var port = 80;
 
 if (global.process.env.NODE_ENV != 'production'){
 	port = 9998;

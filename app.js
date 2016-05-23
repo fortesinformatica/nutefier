@@ -1,7 +1,13 @@
 var http = require('http').Server(),
 		io = require('socket.io')(http);
 
-http.listen(9999, function(){
+var port = 9999;
+
+if (global.process.env.NODE_ENV != 'production'){
+	port = 9998;
+}
+
+http.listen(port, function(){
 	console.log("Server configured for: " + (global.process.env.NODE_ENV || 'development') + " environment.");
 	console.log("Server running on :9999");
   console.log(new Date);

@@ -9,7 +9,7 @@ if (global.process.env.NODE_ENV != 'production'){
 
 http.listen(port, function(){
 	console.log("Server configured for: " + (global.process.env.NODE_ENV || 'development') + " environment.");
-	console.log("Server running on :9999");
+	console.log("Server running on :"+port);
   console.log(new Date);
 });
 

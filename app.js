@@ -1,22 +1,18 @@
-var http = require('http').Server(),
-		https = require('https'),
-		fs = require('fs'),
-		io = require('socket.io')(http);
-
-http.listen(80, function(){
-	console.log("Server configured for: " + (global.process.env.NODE_ENV || 'development') + " environment.");
-	console.log("Server running on :80");
-  console.log(new Date);
-});
+var fs = require('fs');
+var https = require('https');
+var express = require('express');
+var app = express();
 
 var options = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem')
 };
 
-https.createServer(options, app).listen(443, function(){
-	console.log("Server running on 443");
-  console.log(new Date);
+var server = https.createServer(options, app);
+var io = require('socket.io')(server);
+
+server.listen(443, function() {
+  console.log('server up and running at 80');
 });
 
 io.on('connection', function(socket){

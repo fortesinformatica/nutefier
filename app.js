@@ -1,18 +1,9 @@
-var fs = require('fs');
-var https = require('https');
-var express = require('express');
-var app = express();
+var http = require('http').Server(),
+		io = require('socket.io')(http);
 
-var options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
-
-var server = https.createServer(options, app);
-var io = require('socket.io')(server);
-
-server.listen(443, function() {
-  console.log('server up and running at 443, for U is 9999');
+http.listen(9999, function(){
+	console.log("Server running on :9999");
+  console.log(new Date);
 });
 
 io.on('connection', function(socket){

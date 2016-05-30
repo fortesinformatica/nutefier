@@ -12,7 +12,7 @@ var server = https.createServer(options, app);
 var io = require('socket.io')(server);
 
 server.listen(443, function() {
-  console.log('server up and running at 80');
+  console.log('server up and running at 443, for U is 9999');
 });
 
 io.on('connection', function(socket){
